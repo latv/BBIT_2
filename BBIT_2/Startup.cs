@@ -30,7 +30,7 @@ namespace BBIT_2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IHomeRepository, HomeRepository>();
-            services.AddDbContext<HomeContext>(o => o.UseSqlite("Data source=books.db"));
+            services.AddDbContext<HomeContext>(o => o.UseSqlite("Data source=homes.db"));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
