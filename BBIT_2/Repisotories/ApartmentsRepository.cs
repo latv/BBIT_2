@@ -10,18 +10,25 @@ namespace BBIT_2.Repositories
     public class ApartmentRepository : IApartmentsRepsitory 
     {
         private readonly ApartmentContext _context;
+        private readonly HomeContext _homecontext;
 
         public ApartmentRepository(ApartmentContext context)
         {
             _context = context;
         }
 
-        public async Task<Apartments> Create(Apartments apartment)
+        public async Task<Apartments> Create(Apartments apartment, int homeId)
         {
-            _context.Apartments.Add(apartment);
-            await _context.SaveChangesAsync();
 
-            return apartment;
+            if (await _homecontext.Homes.FindAsync(homeId) == null){
+                return HttpNotFound();
+
+            }
+            else {
+                _context.Apartments.Add(apartment);
+                await _context.SaveChangesAsync();
+
+                return apartment; }
         }
 
         public async Task Delete(int id)

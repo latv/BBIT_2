@@ -10,14 +10,16 @@ using System.Threading.Tasks;
 namespace BBIT_2.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+//    [ApiController]
     public class ApartmentsController : ControllerBase
     {
         private readonly IApartmentsRepsitory _apartsmentRepository;
+        private readonly IHomeRepository _homeRepository;
 
-        public ApartmentsController(IApartmentsRepsitory apartmentsRepsitory)
+        public ApartmentsController(IApartmentsRepsitory apartmentsRepsitory,IHomeRepository homeRepository)
         {
             _apartsmentRepository = apartmentsRepsitory;
+            _homeRepository = homeRepository;
         }
 
         [HttpGet]
@@ -33,9 +35,10 @@ namespace BBIT_2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Apartments>> PostApartsmens([FromBody] Apartments apartments)
+        public async Task<ActionResult<Apartments>> PostApartsmens(int homeId ,[FromBody]  Apartments apartments, Homes homes)
         {
-            var newApartsment= await _apartsmentRepository.Create(apartments);
+  
+            var newApartsment= await _apartsmentRepository.Create(apartments,homeId);
             return CreatedAtAction(nameof(GetApartments), new { id = newApartsment.Id }, newApartsment);
         }
 
