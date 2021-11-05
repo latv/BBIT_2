@@ -26,8 +26,8 @@ namespace BBIT_2.Repositories
 
         public async Task Delete(int id)
         {
-            var bookToDelete = await _context.Homes.FindAsync(id);
-            _context.Homes.Remove(bookToDelete);
+            var HomesToDelete = await _context.Homes.FindAsync(id);
+            _context.Homes.Remove(HomesToDelete);
             await _context.SaveChangesAsync();
         }
 

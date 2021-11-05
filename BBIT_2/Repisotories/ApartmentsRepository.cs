@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace BBIT_2.Repositories
 {
-    public class ApartmentsRepository : IApartmentsRepsitory
+    public class ApartmentRepository : IApartmentsRepsitory 
     {
         private readonly ApartmentContext _context;
 
-        public ApartmentsRepository(ApartmentContext context)
+        public ApartmentRepository(ApartmentContext context)
         {
             _context = context;
         }
