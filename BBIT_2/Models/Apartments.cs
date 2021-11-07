@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+  
+
+
 
 namespace BBIT_2.Models
 {
@@ -17,5 +20,10 @@ namespace BBIT_2.Models
         public int LivingSpace { get; set; }
 
         public int? HomeId { get; set; }
+        public ICollection<Homes> Homes{ get; set; }
+
+
+
+
     }
 }

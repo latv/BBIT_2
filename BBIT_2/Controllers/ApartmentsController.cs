@@ -35,10 +35,10 @@ namespace BBIT_2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Apartments>> PostApartsmens(int homeId ,[FromBody]  Apartments apartments, Homes homes)
+        public async Task<ActionResult<Apartments>> PostApartsmens(int id ,[FromBody]  Apartments apartments)
         {
   
-            var newApartsment= await _apartsmentRepository.Create(apartments,homeId);
+            var newApartsment= await _apartsmentRepository.Create(apartments);
             return CreatedAtAction(nameof(GetApartments), new { id = newApartsment.Id }, newApartsment);
         }
 
