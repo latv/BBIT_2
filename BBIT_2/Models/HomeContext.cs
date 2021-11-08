@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace BBIT_2.Models
 {
-    public class HomeContext : DbContext
-    {
+    //public class HomeContext : DbContext
+    //{
 
-        public HomeContext(DbContextOptions<HomeContext> options)
-          : base(options)
-        {
-            Database.EnsureCreated();
-        }
-        public DbSet<Homes> Homes { get; set; }
-    }
+    //    public HomeContext(DbContextOptions<HomeContext> options)
+    //      : base(options)
+    //    {
+    //        Database.EnsureCreated();
+    //    }
+    //    public DbSet<Homes> Homes { get; set; }
+    //}
 }

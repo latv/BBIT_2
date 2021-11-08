@@ -9,9 +9,9 @@ namespace BBIT_2.Repositories
 {
     public class HomeRepository : IHomeRepository
     {
-        private readonly HomeContext _context;
+        private readonly AllContext _context;
 
-        public HomeRepository(HomeContext context)
+        public HomeRepository(AllContext context)
         {
             _context = context;
         }

@@ -32,9 +32,9 @@ namespace BBIT_2
             services.AddScoped<IResidentRepsitory, ResidentRepository>();
             services.AddScoped<IApartmentsRepsitory, ApartmentRepository>();
             services.AddScoped<IHomeRepository, HomeRepository>();
-            services.AddDbContext<ResidentContext>(o => o.UseSqlite("Data source=residents.db"));
-            services.AddDbContext<HomeContext>(o => o.UseSqlite("Data source=homes.db"));
-            services.AddDbContext<ApartmentContext>(o => o.UseSqlite("Data source=apartments.db"));
+            //services.AddDbContext<ResidentContext>(o => o.UseSqlite("Data source=residents.db"));
+            //services.AddDbContext<HomeContext>(o => o.UseSqlite("Data source=homes.db"));
+            services.AddDbContext<AllContext>(o => o.UseSqlite("Data source=apartments.db"));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

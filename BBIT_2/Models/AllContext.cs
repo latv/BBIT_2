@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace BBIT_2.Models
 {
 
-    public class ApartmentContext : DbContext
+    public class AllContext : DbContext
     {
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -17,15 +17,21 @@ namespace BBIT_2.Models
             modelBuilder.Entity<Apartments>()
                 .HasOne<Homes>()
                 .WithMany()
-                .HasForeignKey(p => p.HomeId);               
+                .HasForeignKey(p => p.HomeId);
+            modelBuilder.Entity<Resident>()
+                .HasOne<Apartments>()
+                .WithMany()
+                .HasForeignKey(p => p.ApartmentId);
         }
 
-        public ApartmentContext(DbContextOptions<ApartmentContext> options)
+        public AllContext(DbContextOptions<AllContext> options)
           : base(options)
         {
             Database.EnsureCreated();
         }
         public DbSet<Apartments> Apartments { get; set; }
+        public DbSet<Homes> Homes { get; set; }
+        public DbSet<Resident> Residents { get; set; }
     }
 
 }

@@ -21,6 +21,7 @@ namespace BBIT_2
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    //webBuilder.UseUrls("http://localhost:50001/");
                 });
     }
 }

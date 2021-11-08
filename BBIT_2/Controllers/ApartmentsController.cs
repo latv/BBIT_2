@@ -15,7 +15,7 @@ namespace BBIT_2.Controllers
     {
         private readonly IApartmentsRepsitory _apartsmentRepository;
         private readonly IHomeRepository _homeRepository;
-
+    
         public ApartmentsController(IApartmentsRepsitory apartmentsRepsitory,IHomeRepository homeRepository)
         {
             _apartsmentRepository = apartmentsRepsitory;
@@ -25,7 +25,8 @@ namespace BBIT_2.Controllers
         [HttpGet]
         public async Task<IEnumerable<Apartments>> GetApartments()
         {
-            return await _apartsmentRepository.Get();
+            var ap = await _apartsmentRepository.Get();
+            return ap;
         }
 
         [HttpGet("{id}")]
@@ -35,20 +36,31 @@ namespace BBIT_2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Apartments>> PostApartsmens(int id ,[FromBody]  Apartments apartments)
+        public async Task<ActionResult<Apartments>> PostApartsmens(int id , [FromBody] Apartments apartments, Homes homes)
         {
-  
+            var apartsmentsIdInHomeId = await _homeRepository.Get(apartments.HomeId);
+            if (apartsmentsIdInHomeId == null)
+            {
+                return BadRequest("Don't have related home!");
+            }
             var newApartsment= await _apartsmentRepository.Create(apartments);
             return CreatedAtAction(nameof(GetApartments), new { id = newApartsment.Id }, newApartsment);
         }
 
         [HttpPut]
-        public async Task<ActionResult> PutApartsment(int id, [FromBody] Apartments apartsment)
+        public async Task<ActionResult> PutApartsment(int id  ,[FromBody] Apartments apartsment,Resident resident)
         {
             if (id != apartsment.Id)
             {
                 return BadRequest();
             }
+
+            var apartsmentsIdInHomeId = await _homeRepository.Get(apartsment.HomeId);
+            if (apartsmentsIdInHomeId == null)
+            {
+                return BadRequest("Don't have related home!");
+            }
+
 
             await _apartsmentRepository.Update(apartsment);
 

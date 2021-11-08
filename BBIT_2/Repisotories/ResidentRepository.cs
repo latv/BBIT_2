@@ -9,9 +9,9 @@ namespace BBIT_2.Repositories
 {
     public class ResidentRepository : IResidentRepsitory
     {
-        private readonly ResidentContext _context;
+        private readonly AllContext _context;
 
-        public ResidentRepository(ResidentContext context)
+        public ResidentRepository(AllContext context)
         {
             _context = context;
         }

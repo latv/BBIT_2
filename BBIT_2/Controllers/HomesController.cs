@@ -46,7 +46,7 @@ namespace BBIT_2.Controllers
             {
                 return BadRequest();
             }
-
+            
             await _homeRepository.Update(home);
 
             return NoContent();

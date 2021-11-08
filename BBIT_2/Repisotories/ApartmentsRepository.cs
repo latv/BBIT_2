@@ -9,10 +9,10 @@ namespace BBIT_2.Repositories
 {
     public class ApartmentRepository : IApartmentsRepsitory 
     {
-        private readonly ApartmentContext _context;
+        private readonly AllContext _context;
 
 
-        public ApartmentRepository(ApartmentContext context)
+        public ApartmentRepository(AllContext context)
         {
             _context = context;
         }

@@ -12,7 +12,7 @@ namespace BBIT_2.Models
         public string City { get; set; }
         public string Country { get; set; }
         public string Post_index { get; set; }
-        //public List<Apartments> Apartments { get; set; }
+        public int ApartmentId { get; set; }
 
     }
 

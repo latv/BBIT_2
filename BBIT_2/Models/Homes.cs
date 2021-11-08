@@ -13,8 +13,7 @@ namespace BBIT_2.Models
         public int Residents_count{ get; set; }
         public int Area{ get; set; } // because sqlite doesnt support date type
         public int Living_area{ get; set; }
-
-
+        
 
     }
 
